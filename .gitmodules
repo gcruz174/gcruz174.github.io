@@ -1,0 +1,3 @@
+[submodule "projects/blackjack-prolog"]
+	path = projects/blackjack-prolog
+	url = https://github.com/gcruz174/blackjack-prolog.git
