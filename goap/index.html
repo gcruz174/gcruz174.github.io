@@ -1,0 +1,206 @@
+<!-- 
+  Hello 😊.
+
+  This template is designed and developed by Nisar Hassan Naqvi
+  for anyone to use for free or customize the way they like.
+
+  Github Repo: https://github.com/nisarhassan12/portfolio-template/
+  My Website: https://nisar.dev
+
+  For business & inquires, contact me => syednisarhassan12@gmail.com
+-->
+
+<!--
+  Follow the instructions written in comments to create your stunning portfolio
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="./images/favicon.png" />
+
+  <title>
+    GOAP Project - Castle Siege
+  </title>
+
+  <meta name="description" content="Agent simulation of a castle siege using GOAP">
+  <!-- Add some coding keywords below, Ex: (React, CSS etc) -->
+  <meta name="keywords" content="" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+
+  <!-- ***** Header ***** -->
+
+  <header class="header" role="banner" id="top">
+    <div class="row">
+      <nav class="nav" role="navigation">
+        <ul class="nav__items">
+          <li class="nav__item">
+            <a href="../index.html" class="nav__link">Back to main site</a>
+        </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__text-box row">
+      <div class="header__text">
+        <h1 class="heading-primary">
+          <span>GOAP Project - Castle Siege</span>
+        </h1>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+
+    <!-- ***** Work ***** -->
+
+    <section class="work" id="work">
+      <div class="row">
+        <div class="work__boxes">
+
+          <!-- Each div with the work__box class is a project. -->
+          <div class="work__box">
+            <div class="work__text">
+                <p>
+                  For the final project in the course "Inteligencia Artificial en Videojuegos", we had to build a simulation using GOAP with a setting of our choice.
+                  I chose to implement a simulation of a castle siege, with two types of attackers and three types of defenders. The attackers have to breach the castle door
+                  and reach the flag at the top, while killing any defenders they come across.
+                </p>
+            
+                <h2>Attackers</h2>
+                <img src="images/soldier.gif">
+                <p><strong>Goals:</strong> Destroy the flag, defend itself</p>
+                <p>
+                    The first type of attacker is the Soldier. It has the following possible actions:
+                    <ul>
+                      <li>
+                        <strong>Go To Door:</strong> If the castle door is not broken and the agent is not already at the door, move towards it.
+                      </li>
+                      <li>
+                        <strong>Damage Door:</strong> Punch the door dealing 5 damage per second. The door has 100 health points.
+                      </li>
+                      <li>
+                        <strong>Go To Flag:</strong> If the door is broken and the agent is not already at the flag, move towards it.
+                      </li>
+                      <li>
+                        <strong>Damage Flag:</strong> Punch the flag dealing 5 damage per second. The flag also has 100 health points.
+                      </li>
+                      <li>
+                        <strong>Defend Self:</strong> This action overrides any other action if the agent is near a defender. Walks towards the defender
+                        and punches it dealing 25 damage per second.
+                      </li>
+                    </ul>
+                </p>
+
+                <img src="images/tanks.gif">
+                <p><strong>Goals:</strong> Destroy the door</p>
+                <p>
+                    The second and last type of attacker is the Tank. The Tank has 8 times more health than a basic Attacker, and will not try to defend itself if enemies are nearby.
+                    Its purpose is to tank damage and keep the defenders busy while the Soldiers kill other Guards. It has the following possible actions:
+                    <ul>
+                      <li>
+                        <strong>Go To Door:</strong> If the castle door is not broken and the agent is not already at the door, move towards it.
+                      </li>
+                      <li>
+                        <strong>Damage Door:</strong> Punch the door dealing 5 damage per second. The door has 100 health points.
+                      </li>
+                      <li>
+                        <strong>Retreat:</strong> If the door is broken, retreat to the starting position.
+                      </li>
+                    </ul>      
+                </p>
+            
+                <h2>Defenders</h2>
+                <img src="images/archers.gif">
+                <p><strong>Goals:</strong> Defend the archer towers, defend itself</p>
+                <p>
+                  The first type of defender is the Archer, a ranged unit that will kill attackers from large distances. They can hold up to 6 arrows in their quiver,
+                  and if at any point they run out of arrows they must be refilled at the arrow chest on the ground floor. They will go to the first free archer tower
+                  and defend their position, shooting arrows at far away enemies until they run out. Archers have the following possible actions:
+                  <ul>
+                    <li>
+                      <strong>Go To Chest:</strong> If out of arrows, go to the arrow chest to refill. The Archer can only carry 6 arrows at a time.
+                    </li>
+                    <li>
+                      <strong>Go To Archer Tower:</strong> Pick a free archer tower and go to it. If there are no free towers, wait until one is available.
+                    </li>
+                    <li>
+                      <strong>Defend Tower:</strong> Shoot enemies that are in range of the tower. The Archer will shoot at the closest enemy until it dies or goes out of range.
+                    </li>
+                    <li>
+                      <strong>Defend Self:</strong> If an enemy is near, shoot arrows at it until it dies or goes out of range.
+                    </li>
+                  </ul>      
+              </p>
+              <img src="images/guards.gif">
+              <p><strong>Goals:</strong> Go to a guard position, defend itself</p>
+              <p>
+                The second type of defender is the Guard. The Guard is a melee unit that will hold a position outside the door and kill any attackers that come near.
+                They have the following possible actions:
+                <ul>
+                  <li>
+                    <strong>Go To Defense Post:</strong> Pick a free defense post and go to it. If there are no free posts, wait until one is available.
+                  </li>
+                  <li>
+                    <strong>Defend Post:</strong> Hold the current position.
+                  </li>
+                  <li>
+                    <strong>Defend Self:</strong> If an enemy is near, walk towards it and punch it until it dies or goes out of range.
+                  </li>
+                </ul>      
+              </p>
+              <img src="images/repairman.gif">
+              <p><strong>Goals:</strong> Repair the castle door</p>
+              <p>
+                The third and final type of defender is the Repairman. It is able to repair the castle door using resources from the resources pile.
+                The Repairman has the following possible actions:
+                <ul>
+                  <li>
+                    <strong>Go To Resources Pile:</strong> If the agent is out of resources, go to the resources pile to get more.
+                  </li>
+                  <li>
+                    <strong>Go To Door:</strong> If the door is broken and the agent is not already at the door, move towards it.
+                  </li>
+                  <li>
+                    <strong>Repair Door:</strong> Repair the door healing 25 health points and using one resource unit. The door has 100 health points.
+                  </li>
+                </ul>      
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- ***** Footer ***** -->
+
+  <footer role="contentinfo" class="footer">
+    <div class="row">
+      <!-- Update the links to point to your accounts -->
+      <ul class="footer__social-links">
+        <li class="footer__social-link-item">
+          <a href="https://github.com/gcruz174/" title="Link to Github Profile">
+            <img src="../images/github.svg" class="footer__social-image" alt="Github">
+          </a>
+        </li>
+        <li class="footer__social-link-item">
+          <a href=https://www.linkedin.com/in/gin%C3%A9s-cruz-ch%C3%A1vez-94ba87246/">
+            <img src="../images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top" title="Back to Top">
+    <img src="../images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
+  </a>
+  <script src="./index.js"></script>
+</body>
+
+</html>
